@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #08111f, #02040a);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 80px;
+    font-size: 70px;
+    font-weight: bold;
+    color: #4da3ff;
+    text-shadow: 0 0 20px #4da3ff;
+}
+
+p {
+    color: #b5bfd0;
+    font-size: 20px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
