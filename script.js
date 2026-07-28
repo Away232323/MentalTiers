@@ -1,1 +1,1 @@
-console.log("MentalTiers wurde geladen!");
+console.log("MentalTiers loaded!");
