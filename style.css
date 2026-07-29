@@ -1,3 +1,7 @@
+/* ===========================
+   RESET
+=========================== */
+
 *{
     margin:0;
     padding:0;
@@ -11,113 +15,145 @@ body{
     overflow-x:hidden;
 }
 
-/* Hintergrund */
+/* ===========================
+   HINTERGRUND
+=========================== */
 
 .background-grid{
 
     position:fixed;
-
-    width:100%;
-    height:100%;
-
-    left:0;
-    top:0;
+    inset:0;
 
     background:
-
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
 
     background-size:50px 50px;
 
     z-index:-2;
-
 }
 
-/* Navigation */
+/* ===========================
+   NAVBAR
+=========================== */
 
 .navbar{
 
     width:100%;
-
-    height:80px;
+    height:82px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
-    padding:0 80px;
-
+    padding:0 70px;
 }
+
+/* Logo */
 
 .logo{
 
-    font-size:32px;
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:1px;
 
-    font-weight:bold;
-
+    color:#6eb4ff;
 }
 
 .logo span{
 
-    color:#ffb300;
-
+    color:#ffbf2f;
 }
+
+/* Menü */
 
 .nav-links{
 
     display:flex;
-
-    gap:40px;
-
+    gap:18px;
     list-style:none;
-
 }
+
+/* Buttons */
 
 .nav-links li{
 
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    color:#c8d4e7;
+
     cursor:pointer;
 
-    transition:.3s;
-
+    transition:.25s;
 }
 
 .nav-links li:hover{
 
-    color:#5ca9ff;
+    transform:translateY(-2px);
 
+    background:#1b3e73;
+
+    color:white;
 }
 
-input{
+/* Home aktiv */
 
-    background:#0d1322;
+.nav-links li:first-child{
 
-    border:1px solid #1c2742;
+    background:#2d73ff;
+
+    box-shadow:
+        0 0 15px rgba(70,130,255,.5);
+
+    color:white;
+}
+
+/* Suche */
+
+.navbar input{
+
+    width:240px;
+
+    background:#0c1220;
+
+    border:1px solid #202d46;
 
     color:white;
 
-    padding:10px 18px;
+    padding:12px 18px;
 
-    border-radius:10px;
+    border-radius:12px;
 
+    outline:none;
+
+    transition:.25s;
 }
 
-/* Hero */
+.navbar input:focus{
+
+    border-color:#4b8cff;
+
+    box-shadow:0 0 15px rgba(75,140,255,.35);
+}
+
+/* ===========================
+   HERO
+=========================== */
 
 .hero{
 
-    height:calc(100vh - 80px);
+    height:calc(100vh - 82px);
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     flex-direction:column;
-
 }
 
 .hero h1{
@@ -126,20 +162,25 @@ input{
 
     font-weight:900;
 
+    line-height:1;
+
+    text-shadow:
+        0 0 35px rgba(65,140,255,.45);
 }
 
 .hero span{
 
-    color:#ffb300;
+    color:#ffbf2f;
 
+    text-shadow:
+        0 0 35px rgba(255,191,47,.35);
 }
 
 .hero p{
 
-    margin-top:20px;
+    margin-top:25px;
 
-    color:#8c97aa;
+    color:#8f9bb2;
 
     font-size:22px;
-
 }
