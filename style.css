@@ -184,3 +184,164 @@ body{
 
     font-size:22px;
 }
+
+/* ===========================
+   STATS
+=========================== */
+
+.stats{
+
+    display:flex;
+    gap:20px;
+
+    margin-top:45px;
+
+}
+
+.stat-card{
+
+    width:170px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#4d8eff;
+
+    box-shadow:0 0 20px rgba(77,142,255,.25);
+
+}
+
+.stat-card h2{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card span{
+
+    color:#98a8bf;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+.hero-buttons button{
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.primary-btn{
+
+    background:#2d73ff;
+
+    color:white;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(45,115,255,.5);
+
+}
+
+.secondary-btn{
+
+    background:#121b2d;
+
+    color:white;
+
+    border:1px solid #24324b !important;
+
+}
+
+.secondary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   GAMEMODES
+=========================== */
+
+.gamemodes{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:14px;
+
+    margin-top:45px;
+
+    max-width:900px;
+
+}
+
+.mode{
+
+    background:#101827;
+
+    border:1px solid #27344d;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.mode:hover{
+
+    background:#2d73ff;
+
+    transform:translateY(-3px);
+
+}
