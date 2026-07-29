@@ -1,1 +1,1 @@
-console.log("MentalTiers gestartet!");
+console.log("MentalTiers");
