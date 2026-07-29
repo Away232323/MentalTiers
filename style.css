@@ -6,8 +6,9 @@
 }
 
 body{
-    background:red;
-}
+    background:#060913;
+    color:white;
+    overflow-x:hidden;
 }
 
 /* Hintergrund */
