@@ -2,26 +2,17 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="MentalTiers – Minecraft PvP Rankings"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MentalTiers – Minecraft PvP Rankings">
     <title>MentalTiers – Minecraft PvP Rankings</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
 
     <!-- Hintergrund -->
-    <div class="background">
+    <div class="background" aria-hidden="true">
         <div class="background-grid"></div>
         <div class="background-glow glow-one"></div>
         <div class="background-glow glow-two"></div>
@@ -32,52 +23,38 @@
     <header class="header">
         <nav class="navbar">
 
-            <a href="#home" class="nav-logo">
+            <a class="nav-logo" href="#home" aria-label="MentalTiers Startseite">
                 <span class="logo-icon">M</span>
-
-                <span class="logo-text">
-                    MENTAL<span>TIERS</span>
-                </span>
+                <span class="logo-text">MENTAL<span>TIERS</span></span>
             </a>
 
-            <button
-                class="mobile-menu-button"
-                id="mobileMenuButton"
-                aria-label="Menü öffnen"
-            >
-                ☰
-            </button>
-
             <div class="nav-center" id="navCenter">
-
-                <a href="#home" class="nav-link active">
-                    Home
-                </a>
-
-                <a href="#rankings" class="nav-link">
-                    Rankings
-                </a>
-
-                <a href="#gamemodes" class="nav-link">
-                    Gamemodes
-                </a>
-
-                <a href="#discord" class="nav-link">
-                    Discord
-                </a>
-
+                <a class="nav-link active" href="#home">Home</a>
+                <a class="nav-link" href="#rankings">Rankings</a>
+                <a class="nav-link" href="#gamemodes">Gamemodes</a>
+                <a class="nav-link" href="#discord">Discord</a>
             </div>
 
             <div class="search-box">
                 <span class="search-icon">⌕</span>
 
                 <input
-                    type="text"
                     id="playerSearch"
+                    type="search"
                     placeholder="Search player..."
                     autocomplete="off"
+                    aria-label="Spieler suchen"
                 >
             </div>
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Menü öffnen"
+            >
+                ☰
+            </button>
 
         </nav>
     </header>
@@ -94,13 +71,11 @@
 
             <div class="hero-title-area">
 
-                <div class="hero-logo">
+                <div class="hero-logo" aria-hidden="true">
                     <span>M</span>
                 </div>
 
-                <h1>
-                    MENTAL<span>TIERS</span>
-                </h1>
+                <h1>MENTAL<span>TIERS</span></h1>
 
             </div>
 
@@ -112,9 +87,7 @@
             <div class="stats">
 
                 <article class="stat-card">
-                    <div class="stat-icon players-icon">
-                        ♟
-                    </div>
+                    <div class="stat-icon players-icon">♟</div>
 
                     <div class="stat-information">
                         <strong id="playerCount">0</strong>
@@ -123,9 +96,7 @@
                 </article>
 
                 <article class="stat-card">
-                    <div class="stat-icon online-icon">
-                        ◉
-                    </div>
+                    <div class="stat-icon online-icon">◉</div>
 
                     <div class="stat-information">
                         <strong id="onlineCount">0</strong>
@@ -134,9 +105,7 @@
                 </article>
 
                 <article class="stat-card">
-                    <div class="stat-icon gamemode-icon">
-                        ✦
-                    </div>
+                    <div class="stat-icon gamemode-icon">✦</div>
 
                     <div class="stat-information">
                         <strong id="gamemodeCount">10</strong>
@@ -149,13 +118,29 @@
             <!-- Buttons -->
             <div class="hero-buttons">
 
-                <a href="#rankings" class="button button-primary">
+                <a class="button button-primary rankings-button" href="#rankings">
+
+                    <svg
+                        class="rankings-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M3 12h4l2-7 4 14 2-7h6"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+
                     <span>View Rankings</span>
-                    <span class="button-arrow">→</span>
+
                 </a>
 
-                <a href="#gamemodes" class="button button-secondary">
-                    Explore Gamemodes
+                <a class="button button-secondary api-button" href="#">
+                    API Docs
                 </a>
 
             </div>
@@ -163,94 +148,78 @@
             <!-- Gamemodes -->
             <div class="gamemode-section" id="gamemodes">
 
-                <p class="gamemode-label">
-                    Supported Gamemodes
-                </p>
-
                 <div class="gamemode-list">
 
-                    <button class="gamemode-chip active-mode">
-                        <span class="mode-icon crystal-icon">
-                            ✧
-                        </span>
-                        Crystal
-                    </button>
+                    <div class="mode-row">
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon uhc-icon">
-                            ♥
-                        </span>
-                        UHC
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/og-vanilla.png" alt="">
+                            <span>OG Vanilla</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon sword-icon">
-                            ⚔
-                        </span>
-                        Sword
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/crystal.png" alt="">
+                            <span>Crystal</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon axe-icon">
-                            ⛏
-                        </span>
-                        Axe
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/uhc.png" alt="">
+                            <span>UHC</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon smp-icon">
-                            ▣
-                        </span>
-                        SMP
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/pot.png" alt="">
+                            <span>Pot</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon mace-icon">
-                            ◆
-                        </span>
-                        Mace
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/nethop.png" alt="">
+                            <span>NethOP</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon pot-icon">
-                            ⚗
-                        </span>
-                        Pot
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/smp.png" alt="">
+                            <span>SMP</span>
+                        </button>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon nethpot-icon">
-                            ♨
-                        </span>
-                        NethPot
-                    </button>
+                    </div>
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon diamond-icon">
-                            ♦
-                        </span>
-                        Diamond
-                    </button>
+                    <div class="mode-row">
 
-                    <button class="gamemode-chip">
-                        <span class="mode-icon netherite-icon">
-                            ◈
-                        </span>
-                        Netherite
-                    </button>
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/sword.png" alt="">
+                            <span>Sword</span>
+                        </button>
+
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/axe.png" alt="">
+                            <span>Axe</span>
+                        </button>
+
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/mace.png" alt="">
+                            <span>Mace</span>
+                        </button>
+
+                        <button class="gamemode-chip" type="button">
+                            <img src="assets/icons/speed.png" alt="">
+                            <span>Speed</span>
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <a href="#rankings" class="scroll-down">
+            <a class="scroll-down" href="#rankings">
                 <span>Scroll to rankings</span>
                 <span class="scroll-arrow">⌄</span>
             </a>
 
         </section>
 
-        <!-- Ranking Bereich -->
+        <!-- Rankings -->
         <section class="rankings-section" id="rankings">
 
             <div class="section-heading">
@@ -272,19 +241,13 @@
             <!-- Top 3 -->
             <div class="podium">
 
-                <!-- Platz 2 -->
                 <article
                     class="podium-card second-place player-entry"
                     data-player="coming soon"
                 >
 
-                    <div class="place-number">
-                        #2
-                    </div>
-
-                    <div class="medal silver-medal">
-                        2
-                    </div>
+                    <div class="place-number">#2</div>
+                    <div class="medal silver-medal">2</div>
 
                     <div class="player-avatar">
                         <span>?</span>
@@ -307,23 +270,14 @@
 
                 </article>
 
-                <!-- Platz 1 -->
                 <article
                     class="podium-card first-place player-entry"
                     data-player="coming soon"
                 >
 
-                    <div class="crown">
-                        ♛
-                    </div>
-
-                    <div class="place-number">
-                        #1
-                    </div>
-
-                    <div class="medal gold-medal">
-                        1
-                    </div>
+                    <div class="crown">♛</div>
+                    <div class="place-number">#1</div>
+                    <div class="medal gold-medal">1</div>
 
                     <div class="player-avatar featured-avatar">
                         <span>?</span>
@@ -346,19 +300,13 @@
 
                 </article>
 
-                <!-- Platz 3 -->
                 <article
                     class="podium-card third-place player-entry"
                     data-player="coming soon"
                 >
 
-                    <div class="place-number">
-                        #3
-                    </div>
-
-                    <div class="medal bronze-medal">
-                        3
-                    </div>
+                    <div class="place-number">#3</div>
+                    <div class="medal bronze-medal">3</div>
 
                     <div class="player-avatar">
                         <span>?</span>
@@ -383,7 +331,7 @@
 
             </div>
 
-            <!-- Ranglisten-Tabelle -->
+            <!-- Tabelle -->
             <div class="ranking-panel">
 
                 <div class="ranking-panel-header">
@@ -418,96 +366,104 @@
                         class="ranking-row player-entry"
                         data-player="coming soon"
                     >
+
                         <span class="table-rank">#4</span>
 
                         <div class="table-player">
-                            <div class="small-avatar">?</div>
+
+                            <div class="small-avatar">
+                                ?
+                            </div>
 
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
+
                         </div>
 
                         <span>Crystal</span>
-
-                        <span class="tier-badge">
-                            Unranked
-                        </span>
-
+                        <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
+
                     </div>
 
                     <div
                         class="ranking-row player-entry"
                         data-player="coming soon"
                     >
+
                         <span class="table-rank">#5</span>
 
                         <div class="table-player">
-                            <div class="small-avatar">?</div>
+
+                            <div class="small-avatar">
+                                ?
+                            </div>
 
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
+
                         </div>
 
                         <span>Sword</span>
-
-                        <span class="tier-badge">
-                            Unranked
-                        </span>
-
+                        <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
+
                     </div>
 
                     <div
                         class="ranking-row player-entry"
                         data-player="coming soon"
                     >
+
                         <span class="table-rank">#6</span>
 
                         <div class="table-player">
-                            <div class="small-avatar">?</div>
+
+                            <div class="small-avatar">
+                                ?
+                            </div>
 
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
+
                         </div>
 
                         <span>UHC</span>
-
-                        <span class="tier-badge">
-                            Unranked
-                        </span>
-
+                        <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
+
                     </div>
 
                     <div
                         class="ranking-row player-entry"
                         data-player="coming soon"
                     >
+
                         <span class="table-rank">#7</span>
 
                         <div class="table-player">
-                            <div class="small-avatar">?</div>
+
+                            <div class="small-avatar">
+                                ?
+                            </div>
 
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
+
                         </div>
 
                         <span>SMP</span>
-
-                        <span class="tier-badge">
-                            Unranked
-                        </span>
-
+                        <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
+
                     </div>
 
                     <p class="no-results" id="noResults">
@@ -526,6 +482,7 @@
             <div class="discord-card">
 
                 <div>
+
                     <span class="small-label">
                         MentalTiers Community
                     </span>
@@ -535,12 +492,12 @@
                     </h2>
 
                     <p>
-                        Get tested, meet other players and receive ranking
-                        updates.
+                        Get tested, meet other players and receive ranking updates.
                     </p>
+
                 </div>
 
-                <a href="#" class="button button-primary">
+                <a class="button button-primary" href="#">
                     Join Discord
                 </a>
 
@@ -550,7 +507,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
 
         <div class="footer-logo">
@@ -567,6 +523,7 @@
 
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
+
 </body>
 </html>
