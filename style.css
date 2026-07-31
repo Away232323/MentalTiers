@@ -1061,3 +1061,25 @@ button{
         font-size:40px;
     }
 }
+ /* Größeres MentalTiers-Logo */
+
+.hero-main-logo {
+    width: 170px;
+    height: 170px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .hero-main-logo {
+        width: 145px;
+        height: 145px;
+    }
+}
+
+/* Handy */
+@media (max-width: 480px) {
+    .hero-main-logo {
+        width: 120px;
+        height: 120px;
+    }
+}
