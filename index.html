@@ -6,44 +6,43 @@
     <meta name="description" content="MentalTiers – Minecraft PvP Rankings">
     <title>MentalTiers – Minecraft PvP Rankings</title>
 
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
-
 <body>
 
     <!-- Hintergrund -->
     <div class="background" aria-hidden="true">
         <div class="background-grid"></div>
-        <div class="background-glow glow-one"></div>
-        <div class="background-glow glow-two"></div>
+        <div class="background-overlay"></div>
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-right"></div>
         <div id="particles"></div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navbar -->
     <header class="header">
         <nav class="navbar">
 
-            <a class="nav-logo" href="#home" aria-label="MentalTiers Startseite">
-                <span class="logo-icon">M</span>
-                <span class="logo-text">MENTAL<span>TIERS</span></span>
+            <a href="#home" class="brand">
+                <span class="brand-text">
+                    MENTAL<span>TIERS</span>
+                </span>
             </a>
 
             <div class="nav-center" id="navCenter">
-                <a class="nav-link active" href="#home">Home</a>
-                <a class="nav-link" href="#rankings">Rankings</a>
-                <a class="nav-link" href="#gamemodes">Gamemodes</a>
-                <a class="nav-link" href="#discord">Discord</a>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#rankings" class="nav-link">Rankings</a>
+                <a href="#discord" class="nav-link">Discords</a>
+                <a href="#" class="nav-link">API Docs</a>
             </div>
 
             <div class="search-box">
                 <span class="search-icon">⌕</span>
-
                 <input
                     id="playerSearch"
                     type="search"
                     placeholder="Search player..."
                     autocomplete="off"
-                    aria-label="Spieler suchen"
                 >
             </div>
 
@@ -61,56 +60,67 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- HERO -->
         <section class="hero" id="home">
 
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Minecraft PvP Ranking System
+            <a href="#" class="download-badge">
+                ⭳ Download TierTagger Mod
+            </a>
+
+            <div class="hero-mini-label">
+                <span class="mini-dot"></span>
+                MINECRAFT PVP RANKING
             </div>
 
-            <div class="hero-title-area">
+            <div class="hero-title-row">
+                <img
+                    src="assets/logo/mentaltiers-logo.png"
+                    alt="MentalTiers Logo"
+                    class="hero-main-logo"
+                >
 
-                <div class="hero-logo" aria-hidden="true">
-                    <span>M</span>
-                </div>
-
-                <h1>MENTAL<span>TIERS</span></h1>
-
+                <h1 class="hero-title">
+                    MENTAL<span>TIERS</span>
+                </h1>
             </div>
 
-            <p class="hero-subtitle">
-                Discover the best Minecraft PvP players across every gamemode.
+            <p class="hero-subheading">
+                Minecraft PvP Rankings
             </p>
 
-            <!-- Statistiken -->
+            <div class="hero-line"></div>
+
+            <p class="hero-description">
+                The competitive Minecraft PvP ranking platform.
+            </p>
+
+            <!-- Stats -->
             <div class="stats">
 
                 <article class="stat-card">
-                    <div class="stat-icon players-icon">♟</div>
-
-                    <div class="stat-information">
+                    <div class="stat-left">
+                        <span class="stat-icon players">⌘</span>
                         <strong id="playerCount">0</strong>
-                        <span>Players</span>
                     </div>
+                    <span class="stat-label">PLAYERS TESTED</span>
+                    <span class="live-dot"></span>
                 </article>
 
                 <article class="stat-card">
-                    <div class="stat-icon online-icon">◉</div>
-
-                    <div class="stat-information">
+                    <div class="stat-left">
+                        <span class="stat-icon online">◉</span>
                         <strong id="onlineCount">0</strong>
-                        <span>Online</span>
                     </div>
+                    <span class="stat-label">VIEWERS ONLINE</span>
+                    <span class="live-dot"></span>
                 </article>
 
                 <article class="stat-card">
-                    <div class="stat-icon gamemode-icon">✦</div>
-
-                    <div class="stat-information">
+                    <div class="stat-left">
+                        <span class="stat-icon modes">☆</span>
                         <strong id="gamemodeCount">10</strong>
-                        <span>Gamemodes</span>
                     </div>
+                    <span class="stat-label">GAMEMODES</span>
                 </article>
 
             </div>
@@ -118,104 +128,79 @@
             <!-- Buttons -->
             <div class="hero-buttons">
 
-                <a class="button button-primary rankings-button" href="#rankings">
-
-                    <svg
-                        class="rankings-icon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M3 12h4l2-7 4 14 2-7h6"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-
+                <a href="#rankings" class="main-button primary-button">
+                    <span class="button-icon">↯</span>
                     <span>View Rankings</span>
-
                 </a>
 
-                <a class="button button-secondary api-button" href="#">
+                <a href="#" class="main-button secondary-button">
                     API Docs
                 </a>
 
             </div>
 
             <!-- Gamemodes -->
-            <div class="gamemode-section" id="gamemodes">
+            <div class="gamemode-list" id="gamemodes">
 
-                <div class="gamemode-list">
+                <div class="mode-row">
 
-                    <div class="mode-row">
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/og-vanilla.png" alt="">
+                        <span>OG Vanilla</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/og-vanilla.png" alt="">
-                            <span>OG Vanilla</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/crystal.png" alt="">
+                        <span>Crystal</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/crystal.png" alt="">
-                            <span>Crystal</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/uhc.png" alt="">
+                        <span>UHC</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/uhc.png" alt="">
-                            <span>UHC</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/pot.png" alt="">
+                        <span>Pot</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/pot.png" alt="">
-                            <span>Pot</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/nethop.png" alt="">
+                        <span>NethOP</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/nethop.png" alt="">
-                            <span>NethOP</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/smp.png" alt="">
+                        <span>SMP</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/smp.png" alt="">
-                            <span>SMP</span>
-                        </button>
+                </div>
 
-                    </div>
+                <div class="mode-row">
 
-                    <div class="mode-row">
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/sword.png" alt="">
+                        <span>Sword</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/sword.png" alt="">
-                            <span>Sword</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/axe.png" alt="">
+                        <span>Axe</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/axe.png" alt="">
-                            <span>Axe</span>
-                        </button>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/mace.png" alt="">
+                        <span>Mace</span>
+                    </button>
 
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/mace.png" alt="">
-                            <span>Mace</span>
-                        </button>
-
-                        <button class="gamemode-chip" type="button">
-                            <img src="assets/icons/speed.png" alt="">
-                            <span>Speed</span>
-                        </button>
-
-                    </div>
+                    <button class="gamemode-chip" type="button">
+                        <img src="assets/icons/speed.png" alt="">
+                        <span>Speed</span>
+                    </button>
 
                 </div>
 
             </div>
-
-            <a class="scroll-down" href="#rankings">
-                <span>Scroll to rankings</span>
-                <span class="scroll-arrow">⌄</span>
-            </a>
 
         </section>
 
@@ -223,133 +208,66 @@
         <section class="rankings-section" id="rankings">
 
             <div class="section-heading">
-
-                <div class="heading-badge">
-                    Global Leaderboard
-                </div>
-
-                <h2>
-                    Top <span>100 Players</span>
-                </h2>
-
-                <p>
-                    The highest-ranked Minecraft PvP players on MentalTiers.
-                </p>
-
+                <div class="heading-badge">LEADERBOARD</div>
+                <h2>Top 100 Players</h2>
+                <p>The highest-ranked Minecraft PvP players on MentalTiers.</p>
             </div>
 
-            <!-- Top 3 -->
             <div class="podium">
 
-                <article
-                    class="podium-card second-place player-entry"
-                    data-player="coming soon"
-                >
-
+                <article class="podium-card second-place player-entry" data-player="coming soon">
                     <div class="place-number">#2</div>
                     <div class="medal silver-medal">2</div>
-
-                    <div class="player-avatar">
-                        <span>?</span>
-                    </div>
-
+                    <div class="player-avatar">?</div>
                     <h3>Coming Soon</h3>
-
-                    <p class="player-tier">
-                        Unranked
-                    </p>
-
+                    <p class="player-tier">Unranked</p>
                     <div class="rating">
                         <span>Rating</span>
                         <strong>0</strong>
                     </div>
-
-                    <div class="podium-base">
-                        <span>2</span>
-                    </div>
-
+                    <div class="podium-base"><span>2</span></div>
                 </article>
 
-                <article
-                    class="podium-card first-place player-entry"
-                    data-player="coming soon"
-                >
-
+                <article class="podium-card first-place player-entry" data-player="coming soon">
                     <div class="crown">♛</div>
                     <div class="place-number">#1</div>
                     <div class="medal gold-medal">1</div>
-
-                    <div class="player-avatar featured-avatar">
-                        <span>?</span>
-                    </div>
-
+                    <div class="player-avatar featured-avatar">?</div>
                     <h3>Coming Soon</h3>
-
-                    <p class="player-tier">
-                        Unranked
-                    </p>
-
+                    <p class="player-tier">Unranked</p>
                     <div class="rating">
                         <span>Rating</span>
                         <strong>0</strong>
                     </div>
-
-                    <div class="podium-base">
-                        <span>1</span>
-                    </div>
-
+                    <div class="podium-base"><span>1</span></div>
                 </article>
 
-                <article
-                    class="podium-card third-place player-entry"
-                    data-player="coming soon"
-                >
-
+                <article class="podium-card third-place player-entry" data-player="coming soon">
                     <div class="place-number">#3</div>
                     <div class="medal bronze-medal">3</div>
-
-                    <div class="player-avatar">
-                        <span>?</span>
-                    </div>
-
+                    <div class="player-avatar">?</div>
                     <h3>Coming Soon</h3>
-
-                    <p class="player-tier">
-                        Unranked
-                    </p>
-
+                    <p class="player-tier">Unranked</p>
                     <div class="rating">
                         <span>Rating</span>
                         <strong>0</strong>
                     </div>
-
-                    <div class="podium-base">
-                        <span>3</span>
-                    </div>
-
+                    <div class="podium-base"><span>3</span></div>
                 </article>
 
             </div>
 
-            <!-- Tabelle -->
             <div class="ranking-panel">
 
                 <div class="ranking-panel-header">
-
                     <div>
-                        <span class="small-label">
-                            Global Ranking
-                        </span>
-
-                        <h3>
-                            Player Leaderboard
-                        </h3>
+                        <span class="small-label">Global Ranking</span>
+                        <h3>Player Leaderboard</h3>
                     </div>
 
                     <div class="ranking-filter">
                         All Gamemodes
                     </div>
-
                 </div>
 
                 <div class="ranking-table">
@@ -362,113 +280,63 @@
                         <span>Rating</span>
                     </div>
 
-                    <div
-                        class="ranking-row player-entry"
-                        data-player="coming soon"
-                    >
-
+                    <div class="ranking-row player-entry" data-player="coming soon">
                         <span class="table-rank">#4</span>
-
                         <div class="table-player">
-
-                            <div class="small-avatar">
-                                ?
-                            </div>
-
+                            <div class="small-avatar">?</div>
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
-
                         </div>
-
                         <span>Crystal</span>
                         <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
-
                     </div>
 
-                    <div
-                        class="ranking-row player-entry"
-                        data-player="coming soon"
-                    >
-
+                    <div class="ranking-row player-entry" data-player="coming soon">
                         <span class="table-rank">#5</span>
-
                         <div class="table-player">
-
-                            <div class="small-avatar">
-                                ?
-                            </div>
-
+                            <div class="small-avatar">?</div>
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
-
                         </div>
-
                         <span>Sword</span>
                         <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
-
                     </div>
 
-                    <div
-                        class="ranking-row player-entry"
-                        data-player="coming soon"
-                    >
-
+                    <div class="ranking-row player-entry" data-player="coming soon">
                         <span class="table-rank">#6</span>
-
                         <div class="table-player">
-
-                            <div class="small-avatar">
-                                ?
-                            </div>
-
+                            <div class="small-avatar">?</div>
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
-
                         </div>
-
                         <span>UHC</span>
                         <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
-
                     </div>
 
-                    <div
-                        class="ranking-row player-entry"
-                        data-player="coming soon"
-                    >
-
+                    <div class="ranking-row player-entry" data-player="coming soon">
                         <span class="table-rank">#7</span>
-
                         <div class="table-player">
-
-                            <div class="small-avatar">
-                                ?
-                            </div>
-
+                            <div class="small-avatar">?</div>
                             <div>
                                 <strong>Coming Soon</strong>
                                 <small>MentalTiers Player</small>
                             </div>
-
                         </div>
-
                         <span>SMP</span>
                         <span class="tier-badge">Unranked</span>
                         <strong>0</strong>
-
                     </div>
 
-                    <p class="no-results" id="noResults">
-                        No player found.
-                    </p>
+                    <p class="no-results" id="noResults">No player found.</p>
 
                 </div>
 
@@ -476,54 +344,28 @@
 
         </section>
 
-        <!-- Discord -->
         <section class="discord-section" id="discord">
-
             <div class="discord-card">
-
                 <div>
-
-                    <span class="small-label">
-                        MentalTiers Community
-                    </span>
-
-                    <h2>
-                        Join our Discord server
-                    </h2>
-
-                    <p>
-                        Get tested, meet other players and receive ranking updates.
-                    </p>
-
+                    <span class="small-label">MentalTiers Community</span>
+                    <h2>Join our Discord server</h2>
+                    <p>Get tested, meet other players and receive ranking updates.</p>
                 </div>
 
-                <a class="button button-primary" href="#">
+                <a href="#" class="main-button primary-button">
                     Join Discord
                 </a>
-
             </div>
-
         </section>
 
     </main>
 
     <footer class="footer">
-
-        <div class="footer-logo">
-            MENTAL<span>TIERS</span>
-        </div>
-
-        <p>
-            Minecraft PvP Rankings
-        </p>
-
-        <span>
-            © 2026 MentalTiers
-        </span>
-
+        <div class="footer-logo">MENTAL<span>TIERS</span></div>
+        <p>Minecraft PvP Rankings</p>
+        <span>© 2026 MentalTiers</span>
     </footer>
 
-    <script src="script.js?v=3"></script>
-
+    <script src="script.js?v=4"></script>
 </body>
 </html>
