@@ -1,0 +1,15 @@
+name: MentalTiersVerify
+version: 1.0.0
+main: me.away.mentaltiersverify.MentalTiersVerify
+api-version: '1.21.6'
+author: Away
+website: https://github.com/Away232323/MentalTiers
+description: Minecraft account verification bridge for MentalTiers
+commands:
+  confirm:
+    description: Confirm your MentalTiers verification code
+    usage: /confirm <code>
+    permission: mentaltiers.confirm
+permissions:
+  mentaltiers.confirm:
+    default: true
