@@ -1,0 +1,8 @@
+# Public URL of the MentalTiers bot verification API.
+# Example: https://bot.example.com/api/confirm
+api-url: "https://YOUR-BOT-HOST/api/confirm"
+
+# Must be exactly the same value as VERIFY_API_SECRET on the Discord bot host.
+api-secret: "CHANGE-ME"
+
+request-timeout-seconds: 10
