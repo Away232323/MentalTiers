@@ -1,15 +1,48 @@
-const MODES = ['sword', 'axe', 'smp', 'uhc', 'crystal', 'mace'];
+const MODES = [
+  'sword',
+  'speed',
+  'pot',
+  'nethop',
+  'ogvanilla',
+  'smp',
+  'mace',
+  'crystal',
+  'axe',
+  'uhc'
+];
+
 const TIERS = ['HT1', 'LT1', 'HT2', 'LT2', 'HT3', 'LT3', 'HT4', 'LT4', 'HT5', 'LT5'];
+const REGIONS = ['eu', 'na', 'au', 'as'];
+const QUEUE_LIMIT = 20;
 
 const TIER_POINTS = Object.fromEntries(TIERS.map((tier, index) => [tier, TIERS.length - index]));
 
 const MODE_LABELS = {
   sword: 'Sword',
-  axe: 'Axe',
+  speed: 'Speed',
+  pot: 'Pot',
+  nethop: 'NethOP',
+  ogvanilla: 'OG Vanilla',
   smp: 'SMP',
-  uhc: 'UHC',
+  mace: 'Mace',
   crystal: 'Crystal',
-  mace: 'Mace'
+  axe: 'Axe',
+  uhc: 'UHC'
 };
 
-module.exports = { MODES, TIERS, TIER_POINTS, MODE_LABELS };
+const REGION_LABELS = {
+  eu: 'EU',
+  na: 'NA',
+  au: 'AU',
+  as: 'AS'
+};
+
+module.exports = {
+  MODES,
+  TIERS,
+  REGIONS,
+  QUEUE_LIMIT,
+  TIER_POINTS,
+  MODE_LABELS,
+  REGION_LABELS
+};
