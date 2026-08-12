@@ -1,21 +1,25 @@
 # MentalTiers
 
-MentalTiers is a Discord + Minecraft tier-testing system inspired by large public tierlist servers.
+MentalTiers is a **0€ serverless Discord tierlist system** for Minecraft.
 
-## Flow
+The live version is inside `worker/` and is designed for **Cloudflare Workers + Cloudflare D1**. No Minecraft verification server and no 24/7 VPS are required.
 
-1. Player opens `#verify-account` on Discord.
-2. Player presses **Verify Account** and enters the Minecraft IGN.
-3. MentalTiers generates a private 6-character verification code.
-4. Player joins the configured verification Minecraft server.
-5. Player runs `/confirm CODE` in Minecraft.
-6. The Paper plugin sends the real Minecraft username + code to the MentalTiers bot.
-7. Discord automatically gives the **Mental Verified** role.
-8. The player's waitlist channels become visible.
-9. If a tester opens a queue, the player can press **Join Queue**.
-10. Every mode/region queue has a maximum of **20 players**.
+## What it does
 
-One Minecraft account can only be linked to one Discord account.
+1. Player opens `#verify-account`.
+2. Player presses **Verify Account**.
+3. Player enters a Minecraft Java username.
+4. MentalTiers stores the linked Minecraft name and gives **Mental Verified**.
+5. The private tier-testing category becomes visible.
+6. Each gamemode has its own waitlist channel.
+7. Tester opens a queue with `/queue-open`.
+8. Players press **Join Queue**.
+9. Every queue has a maximum of **20 players**.
+10. Tester uses `/queue-next` to take player #1.
+11. Tester enters the result with `/result`.
+12. MentalTiers stores the tier and automatically gives the matching Discord role.
+
+> Current free verification checks/links the Minecraft Java username. It does **not yet prove ownership of the Microsoft/Minecraft account**. A Microsoft ownership login can be added later without changing the queue system.
 
 ## Modes
 
@@ -34,7 +38,7 @@ One Minecraft account can only be linked to one Discord account.
 
 `HT1 > LT1 > HT2 > LT2 > HT3 > LT3 > HT4 > LT4 > HT5 > LT5`
 
-## Discord commands
+## Commands
 
 ### Everyone
 
@@ -42,72 +46,86 @@ One Minecraft account can only be linked to one Discord account.
 - `/leaderboard`
 - `/help`
 
-### Tester / Admin
+### Mental Tester / Admin
 
-- `/queue-open mode [region]`
-- `/queue-close mode [region]`
-- `/queue-next mode [region]`
-- `/test-result user mode tier`
-- `/tier-set user mode tier`
-- `/tier-remove user mode`
+- `/queue-open mode`
+- `/queue-close mode`
+- `/queue-next mode`
+- `/result user mode tier`
 
 ### Admin
 
-- `/setup` - automatically creates roles, verification panel and waitlist channels
-- `/queue-clear mode [region]`
-- `/verify-reset user`
+- `/setup`
 
-## Queue buttons
+`/setup` automatically creates:
 
-Each waitlist channel has one persistent status panel:
+- `Mental Verified` role
+- `Mental Tester` role
+- `#verify-account`
+- private `🏆 TIER TESTING` category
+- all 10 waitlist channels
+- verification panel
+- queue panels with Join / Leave / View buttons
 
-- **Join Queue** - only enabled while the queue is open
+## Queue system
+
+Each queue has a maximum of **20 players** and one persistent panel.
+
+Buttons:
+
+- **Join Queue**
 - **Leave Queue**
 - **View Queue**
 
-The panel updates automatically when a player joins/leaves, when a tester opens/closes the queue and when `/queue-next` is used.
+The panel updates when the queue opens/closes or players join/leave.
 
-## Discord bot environment variables
+## 0€ hosting
 
-Required:
+The production code is in:
 
-- `DISCORD_TOKEN` - Discord bot token
-- `GUILD_ID` - MentalTiers Discord server ID
-- `VERIFY_SERVER_IP` - IP shown to players during verification
-- `VERIFY_API_SECRET` - private random secret shared with the Paper verify plugin
+`worker/`
 
-Optional:
+It uses:
 
-- `PORT` / `VERIFY_API_PORT` - HTTP verification API port, default `8787`
-- `TEST_COOLDOWN_DAYS` - default `7`
-- `ENABLED_REGIONS` - comma separated, default `eu`; valid: `eu,na,au,as`
+- Cloudflare Workers for Discord interactions
+- Cloudflare D1 for users, queues, tiers and history
+- Discord HTTP Interactions, so no permanent WebSocket process is needed
+- GitHub for all source code
 
-Never commit the Discord token or API secret to GitHub files.
+## Cloudflare variables
 
-## Minecraft verification plugin
+The Worker needs these variables/secrets:
 
-Source: `minecraft-plugin/`
+- `DISCORD_PUBLIC_KEY`
+- `DISCORD_BOT_TOKEN`
+- `DISCORD_APPLICATION_ID`
+- `DISCORD_GUILD_ID`
+- `SETUP_SECRET`
 
-The plugin is for Paper 1.21.6 and provides:
+It also needs one D1 binding named exactly:
 
-`/confirm <6-character-code>`
+`DB`
 
-After GitHub Actions builds it, upload `MentalTiersVerify.jar` to the verification server's `plugins` folder.
+**Never put the Discord bot token into a GitHub file.**
 
-Then edit:
+## Deployment
 
-`plugins/MentalTiersVerify/config.yml`
+Cloudflare can import the GitHub repository directly. Set the project root directory to:
 
-Set:
+`worker`
 
-- `api-url` to the public MentalTiers bot endpoint ending in `/api/confirm`
-- `api-secret` to exactly the same value as `VERIFY_API_SECRET`
+After deployment, use:
 
-## Automatic GitHub builds
+`https://YOUR-WORKER.workers.dev/interactions`
 
-- `MentalTiers Check` checks the Discord bot JavaScript.
-- `Build MentalTiersVerify` compiles the Minecraft `.jar` using Java 21 and Maven entirely on GitHub.
+as the Discord **Interactions Endpoint URL**.
 
-No local IDE, Maven, Node.js or Java installation is required for editing/building the project through GitHub.
+Then register the Slash Commands once with:
 
-GitHub stores and builds the project, but a Discord bot still needs a continuously running process when the final system goes live.
+`https://YOUR-WORKER.workers.dev/register?key=YOUR_SETUP_SECRET`
+
+After the commands appear in Discord, run `/setup` as a Discord administrator.
+
+## Old prototype
+
+The old Node/Gateway bot and Minecraft verification-server prototype may still exist in older project history, but the intended live build is now the `worker/` version.
