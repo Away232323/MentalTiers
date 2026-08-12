@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Check legacy bot syntax
+        run: node --check src/index.js
 
-      - name: Check JavaScript syntax
-        run: npm run check
+      - name: Check Cloudflare Worker syntax
+        run: node --check worker/src/index.js
